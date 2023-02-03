@@ -1,6 +1,3 @@
-/* const sectionVerMapa = document.getElementById("ver-mapa")
-sectionVerMapa.style.display = "flex" */
-
 const canvaMapa = document.getElementById("mapa");
 let lienzo = canvaMapa.getContext("2d");
 
@@ -75,7 +72,7 @@ function cargarCerdito() {
 }
 
 function dibujar() {
-    if (fondo.cargaOk /*== true*/) {
+    if (fondo.cargaOk) {
         dibujarFondo();
     }
     if (vaca.cargaOk) {
@@ -117,7 +114,7 @@ function dibujarCerdito(xc, yc) {
 }
 
 function moverCerdito(evento) {
-    let movimiento = 40;
+    let movimiento = 20;
     switch (evento.keyCode) {
         case teclas.DOWN:
             dibujarFondo();
@@ -125,7 +122,7 @@ function moverCerdito(evento) {
             dibujarPollos();
             dibujarLobo();
             dibujarCerdito(cerdo.x, cerdo.y + movimiento);
-            cerdo.y = cerdo.y + movimiento;     //para guardar el punto anterior
+            cerdo.y = cerdo.y + movimiento;
         break;
         case teclas.UP:
             dibujarFondo();
