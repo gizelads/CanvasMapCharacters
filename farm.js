@@ -1,5 +1,8 @@
-let vp = document.getElementById("countryside");
-let papel = vp.getContext("2d");
+/* const sectionVerMapa = document.getElementById("ver-mapa")
+sectionVerMapa.style.display = "flex" */
+
+const canvaMapa = document.getElementById("mapa");
+let lienzo = canvaMapa.getContext("2d");
 
 document.addEventListener("keyup", moverCerdito);
 
@@ -90,27 +93,27 @@ function dibujar() {
 }
 
 function dibujarFondo() {
-    papel.drawImage(fondo.imagen, 0, 0);
+    lienzo.drawImage(fondo.imagen, 0, 0);
 }
 
 function dibujarVacas() {
     for (let v = 0; v < cantidad; v++) {
-        papel.drawImage(vaca.imagen, vaca.x[v], vaca.y[v]); 
+        lienzo.drawImage(vaca.imagen, vaca.x[v], vaca.y[v]); 
     }
 }
 
 function dibujarPollos() {
     for (let p = 0; p < cantidad; p++) {
-        papel.drawImage(pollo.imagen, pollo.x[p], pollo.y[p]);
+        lienzo.drawImage(pollo.imagen, pollo.x[p], pollo.y[p]);
     }
 }
 
 function dibujarLobo() {
-    papel.drawImage(lobo.imagen, lobo.x, lobo.y);
+    lienzo.drawImage(lobo.imagen, lobo.x, lobo.y);
 }
 
 function dibujarCerdito(xc, yc) {
-    papel.drawImage(cerdo.imagen, xc, yc);
+    lienzo.drawImage(cerdo.imagen, xc, yc);
 }
 
 function moverCerdito(evento) {
