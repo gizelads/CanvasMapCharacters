@@ -1,9 +1,8 @@
 const canvaMapa = document.getElementById("mapa");
 let lienzo = canvaMapa.getContext("2d");
 
-document.addEventListener("keyup", moverCerdito);
-
 let cantidad = aleatorio(1, 5);
+let movimiento = 20;
 
 let teclas = {LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40};
 let fondo = {url: "assets/tile.png", cargaOk: false};
@@ -113,45 +112,40 @@ function dibujarCerdito(xc, yc) {
     lienzo.drawImage(cerdo.imagen, xc, yc);
 }
 
-function moverCerdito(evento) {
-    let movimiento = 20;
-    switch (evento.keyCode) {
-        case teclas.DOWN:
-            dibujarFondo();
-            dibujarVacas();
-            dibujarPollos();
-            dibujarLobo();
-            dibujarCerdito(cerdo.x, cerdo.y + movimiento);
-            cerdo.y = cerdo.y + movimiento;
-        break;
-        case teclas.UP:
-            dibujarFondo();
-            dibujarVacas();
-            dibujarPollos();
-            dibujarLobo();
-            dibujarCerdito(cerdo.x, cerdo.y - movimiento);
-            cerdo.y = cerdo.y - movimiento;
-        break;
-        case teclas.LEFT:
-            dibujarFondo();
-            dibujarVacas();
-            dibujarPollos();
-            dibujarLobo();
-            dibujarCerdito(cerdo.x - movimiento, cerdo.y);
-            cerdo.x = cerdo.x - movimiento;
-        break;
-        case teclas.RIGHT:
-            dibujarFondo();
-            dibujarVacas();
-            dibujarPollos();
-            dibujarLobo();
-            dibujarCerdito(cerdo.x + movimiento, cerdo.y);
-            cerdo.x = cerdo.x + movimiento;
-        break;
-        default:
-            console.log("Otra tecla");
-        break;
-    }
+function moverCerditoBotonDerecha(){
+    dibujarFondo();
+    dibujarVacas();
+    dibujarPollos();
+    dibujarLobo();
+    dibujarCerdito(cerdo.x + movimiento, cerdo.y);
+    cerdo.x = cerdo.x + movimiento;
+}
+
+function moverCerditoBotonIzquierda(){
+    dibujarFondo();
+    dibujarVacas();
+    dibujarPollos();
+    dibujarLobo();
+    dibujarCerdito(cerdo.x - movimiento, cerdo.y);
+    cerdo.x = cerdo.x - movimiento;
+}
+
+function moverCerditoBotonArriba(){
+    dibujarFondo();
+    dibujarVacas();
+    dibujarPollos();
+    dibujarLobo();
+    dibujarCerdito(cerdo.x, cerdo.y - movimiento);
+    cerdo.y = cerdo.y - movimiento;
+}
+
+function moverCerditoBotonAbajo(){
+    dibujarFondo();
+    dibujarVacas();
+    dibujarPollos();
+    dibujarLobo();
+    dibujarCerdito(cerdo.x, cerdo.y + movimiento);
+    cerdo.y = cerdo.y + movimiento;
 }
 
 function aleatorio(min, maxi) {
