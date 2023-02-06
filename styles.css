@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    background-color: darkseagreen;
+    font-family: 'Press Start 2P', cursive;
+}
+
 #ver-mapa {
     display: flex;
     flex-direction: column;
