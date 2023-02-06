@@ -2,14 +2,14 @@ const canvaMapa = document.getElementById("mapa");
 let lienzo = canvaMapa.getContext("2d");
 
 let cantidad = aleatorio(1, 5);
-let movimiento = 20;
+let intervaloCerdo = setInterval(dibujarCerdito, 50);
 
 let teclas = {LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40};
 let fondo = {url: "assets/tile.png", cargaOk: false};
 let vaca = {url: "assets/vaca.png", cargaOk: false, x: new Array(), y: new Array()};
 let pollo = {url: "assets/pollo.png", cargaOk: false, x: new Array(), y: new Array()};
 let lobo = {url: "assets/lobo.png", cargaOk: false, x: aleatorio(0, 420), y: aleatorio(0, 420)};
-let cerdo = {url: "assets/cerdo.png", cargaOk: false, x: aleatorio(0, 420), y: aleatorio(0, 420)};
+let cerdo = {url: "assets/cerdo.png", cargaOk: false, x: aleatorio(0, 420), y: aleatorio(0, 420), velocidadX: 0, velocidadY: 0};
 
 fondo.imagen = new Image();
 fondo.imagen.src = fondo.url;
@@ -108,44 +108,35 @@ function dibujarLobo() {
     lienzo.drawImage(lobo.imagen, lobo.x, lobo.y);
 }
 
-function dibujarCerdito(xc, yc) {
-    lienzo.drawImage(cerdo.imagen, xc, yc);
+function dibujarCerdito() {
+    dibujarFondo()
+    dibujarVacas()
+    dibujarPollos()
+    dibujarLobo()
+    cerdo.x = cerdo.x + cerdo.velocidadX;
+    cerdo.y = cerdo.y + cerdo.velocidadY;
+    lienzo.drawImage(cerdo.imagen, cerdo.x, cerdo.y);
 }
 
 function moverCerditoBotonDerecha(){
-    dibujarFondo();
-    dibujarVacas();
-    dibujarPollos();
-    dibujarLobo();
-    dibujarCerdito(cerdo.x + movimiento, cerdo.y);
-    cerdo.x = cerdo.x + movimiento;
+    cerdo.velocidadX = 5;
 }
 
 function moverCerditoBotonIzquierda(){
-    dibujarFondo();
-    dibujarVacas();
-    dibujarPollos();
-    dibujarLobo();
-    dibujarCerdito(cerdo.x - movimiento, cerdo.y);
-    cerdo.x = cerdo.x - movimiento;
+    cerdo.velocidadX = - 5;
 }
 
-function moverCerditoBotonArriba(){
-    dibujarFondo();
-    dibujarVacas();
-    dibujarPollos();
-    dibujarLobo();
-    dibujarCerdito(cerdo.x, cerdo.y - movimiento);
-    cerdo.y = cerdo.y - movimiento;
+function moverCerditoBotonArriba(){ 
+    cerdo.velocidadY = - 5;
 }
 
 function moverCerditoBotonAbajo(){
-    dibujarFondo();
-    dibujarVacas();
-    dibujarPollos();
-    dibujarLobo();
-    dibujarCerdito(cerdo.x, cerdo.y + movimiento);
-    cerdo.y = cerdo.y + movimiento;
+    cerdo.velocidadY = 5;
+}
+
+function detenerMovimiento(){
+    cerdo.velocidadX = 0;
+    cerdo.velocidadY = 0;
 }
 
 function aleatorio(min, maxi) {
