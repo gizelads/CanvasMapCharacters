@@ -7,14 +7,14 @@
     </head>
     <body>
         <section id="ver-mapa">
-            <h1>Move the 🐖 with the buttons</h1>
+            <h1>Move the 🐖 with buttons or arrow keys</h1>
             <canvas width="500" height="500" id="mapa"></canvas>
         </section>
         <section id="botones-flechas">
-            <button onmouseup = detenerMovimiento() onmousedown = moverCerditoBotonArriba()>▲</button>
-            <button onmouseup = detenerMovimiento() onmousedown = moverCerditoBotonIzquierda()>◄</button>
-            <button onmouseup = detenerMovimiento() onmousedown = moverCerditoBotonAbajo()>▼</button>
-            <button onmouseup = detenerMovimiento() onmousedown = moverCerditoBotonDerecha()>►</button>
+            <button onmouseup = detenerCerdito() onmousedown = moverCerditoArriba()>▲</button>
+            <button onmouseup = detenerCerdito() onmousedown = moverCerditoIzquierda()>◄</button>
+            <button onmouseup = detenerCerdito() onmousedown = moverCerditoAbajo()>▼</button>
+            <button onmouseup = detenerCerdito() onmousedown = moverCerditoDerecha()>►</button>
         </section>
         <script src="farm.js"></script>
     </body>

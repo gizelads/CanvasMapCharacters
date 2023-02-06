@@ -4,6 +4,10 @@ let lienzo = canvaMapa.getContext("2d");
 let cantidad = aleatorio(1, 5);
 let intervaloCerdo = setInterval(dibujarCerdito, 50);
 
+document.addEventListener("keydown", moverCerdito);
+document.addEventListener("keyup", detenerCerdito);
+let teclas = {LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40};
+
 let fondo = {url: "assets/tile.png", cargaOk: false};
 let vaca = {url: "assets/vaca.png", cargaOk: false, x: new Array(), y: new Array()};
 let pollo = {url: "assets/pollo.png", cargaOk: false, x: new Array(), y: new Array()};
@@ -117,25 +121,45 @@ function dibujarCerdito() {
     lienzo.drawImage(cerdo.imagen, cerdo.x, cerdo.y);
 }
 
-function moverCerditoBotonDerecha(){
+function moverCerditoDerecha(){
     cerdo.velocidadX = 5;
 }
 
-function moverCerditoBotonIzquierda(){
+function moverCerditoIzquierda(){
     cerdo.velocidadX = - 5;
 }
 
-function moverCerditoBotonArriba(){ 
+function moverCerditoArriba(){ 
     cerdo.velocidadY = - 5;
 }
 
-function moverCerditoBotonAbajo(){
+function moverCerditoAbajo(){
     cerdo.velocidadY = 5;
 }
 
-function detenerMovimiento(){
+function detenerCerdito(){
     cerdo.velocidadX = 0;
     cerdo.velocidadY = 0;
+}
+
+function moverCerdito(evento) {
+    switch (evento.keyCode) {
+        case teclas.DOWN:
+            moverCerditoAbajo();
+        break;
+        case teclas.UP:
+            moverCerditoArriba();
+        break;
+        case teclas.LEFT:
+            moverCerditoIzquierda();
+        break;
+        case teclas.RIGHT:
+            moverCerditoDerecha();
+        break;
+        default:
+            console.log("Otra tecla");
+        break;
+    }
 }
 
 function aleatorio(min, maxi) {
