@@ -4,7 +4,6 @@ let lienzo = canvaMapa.getContext("2d");
 let cantidad = aleatorio(1, 5);
 let intervaloCerdo = setInterval(dibujarCerdito, 50);
 
-let teclas = {LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40};
 let fondo = {url: "assets/tile.png", cargaOk: false};
 let vaca = {url: "assets/vaca.png", cargaOk: false, x: new Array(), y: new Array()};
 let pollo = {url: "assets/pollo.png", cargaOk: false, x: new Array(), y: new Array()};
