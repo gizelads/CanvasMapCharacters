@@ -1,4 +1,6 @@
 const canvaMapa = document.getElementById("mapa");
+canvaMapa.width = 500;
+canvaMapa.height = 500;
 let lienzo = canvaMapa.getContext("2d");
 
 let cantidad = aleatorio(1, 5);
